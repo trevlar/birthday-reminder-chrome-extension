@@ -9,13 +9,108 @@
         <link rel="stylesheet" href="css/popup.css" type="screen">
         <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- endbuild -->
-    <title>Popup Extension</title>
+    <title>Birthday Reminder</title>
   </head>
 
   <body>
 
-    <div ng-controller="MainController">
-        <h1>Hey! {{welcomeMsg}}</h1>
+    <div ng-controller="MainController as main">
+        <h1>Birthday List</h1>
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2">Name</th>
+                    <th colspan="3">Birthday</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>
+                        First
+                    </th>
+                    <th>
+                        Last
+                    </th>
+                    <th>
+                        Month
+                    </th>
+                    <th>
+                        Day
+                    </th>
+                    <th>
+                        Year
+                    </th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="person in main.birthdayList">
+
+                    <td ng-if="person.edit === true">
+                        <input type="text" ng-model="person.firstName"
+                               placeholder="First Name" size="7">
+                    </td>
+                    <td ng-if="person.edit === true">
+                        <input type="text" ng-model="person.lastName"
+                               placeholder="Last Name" size="7">
+                    </td>
+                    <!-- TODO: Convert these to a date picker. -->
+                    <td ng-if="person.edit === true">
+                        <input type="text" ng-model="person.birth.month"
+                               placeholder="Month" size="1">
+                    </td>
+                    <td ng-if="person.edit === true">
+                        <input type="text" ng-model="person.birth.day"
+                               placeholder="Day" size="1">
+                    </td>
+                    <td ng-if="person.edit === true">
+                        <input type="text" ng-model="person.birth.year"
+                               placeholder="Year" size="3">
+                    </td>
+
+                    <td ng-if="!person.edit">
+                        {{person.firstName}}
+                    </td>
+                    <td ng-if="!person.edit">
+                        {{person.lastName}}
+                    </td>
+                    <td ng-if="!person.edit">
+                        {{person.birth.month}}
+                    </td>
+                    <td ng-if="!person.edit">
+                        {{person.birth.day}}
+                    </td>
+                    <td ng-if="!person.edit">
+                        {{person.birth.year}}
+                    </td>
+
+                    <td>
+                        <button class="btn btn-success btn-xs" 
+                                ng-click="main.updatePerson($index, person)"
+                                 ng-if="person.edit === true">
+                            <i class="glyphicon glyphicon-check"></i>
+                        </button>
+                        <button class="btn btn-warning btn-xs" 
+                                ng-click="main.editPerson($index, person)"
+                                 ng-if="!person.edit">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <button ng-click="main.addNewBirthday()"
+                                class="button button-block button-stable">
+                            Add New Person
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
         <button class="btn btn-info" ng-click="contribute()">Contribute</button>
     </div>
 
@@ -26,6 +121,7 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="/scripts/app/modules/angular-underscore.min.js"></script>
     <script type="text/javascript" src="/scripts/app/modules/ui-bootstrap-0.9.0.min.js"></script>
+    <script src="bower_components/angular-chrome-localstorage/localwrapper.js"></script>
     <script src="scripts/app/app.js"></script>
     <script src="scripts/app/services/storage.js"></script>
     <script src="scripts/app/controllers/controllers.js"></script>

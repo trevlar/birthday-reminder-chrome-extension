@@ -1,5 +1,5 @@
 {
-    "name": "Chrome Extension",
+    "name": "Birthday Reminder",
     "version": "0.2.0",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",

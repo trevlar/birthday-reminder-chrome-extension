@@ -1,7 +1,7 @@
-A Chrome Extension base project with AngularJS
+A Chrome Extension that will remind about birthdays.
 ================
 
-This is a scaffolding project to help you get started.
+This project is built off of a scaffolding project.
 This includes :
 
 - AngularJS Popup App `scripts/app/`
@@ -10,9 +10,18 @@ This includes :
 - Mochai/Chai/SinonJS for testing contentscripts
 - Grunt and Bower
 
-See some slides about creating chrome extensions [here](http://www.slideshare.net/flrent/build-your-own-chrome-extension-with-angularjs)
+## Minimum Viable Product
+- Birthdays can be added to chrome sync storage.
+- Global time frame for reminders to appear.
+- Birthday reminder day of the birthday.
+- Reminders appear either as a header, footer or sidebar.
+	- Possibly selected by user
 
-![http://www.slideshare.net/flrent/build-your-own-chrome-extension-with-angularjs](http://i.imgur.com/pFPXooZ.png)
+## Nice to have
+- Integrated with Facebook
+	- Import birthdays
+	- Post to facebook
+- Individual birthday tasks or customized reminder messages.
 
 ## Get Started
 - Clone this repo
@@ -34,8 +43,6 @@ To build the app and get a single scripts for each popup app, content script, or
 
 
 ## License
-[Florent Lamoureux @flrent](http://twitter.com/flrent)
+[Trevor Carlston @Trevlaar](http://twitter.com/Trevlaar)
 <br>
 Licensed under the MIT license.
-<br>
-Copyright (c) 2014 - [BugBuster SA](http://bugbuster.com)
