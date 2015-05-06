@@ -1,9 +1,9 @@
 angular.module('popup')
-  .controller('MainController', ['LocalWrapper', function(LocalWrapper) {
+  .controller('MainController', ['$rootScope', 'Storage', function($rootScope, Storage) {
 
-  		LocalWrapper.setSync(true);
-		// scope = this;
-		this.birthdayList = LocalWrapper.get('birthdayList', true);
+	  	this.storage = Storage;
+	  	this.storage.setSync(true);
+		this.birthdayList = [];
 		// [{
 		// 	firstName: 'Trevor',
 		// 	lastName: 'Carlston',
@@ -14,9 +14,11 @@ angular.module('popup')
 		// 	},
 		// 	edit: false
 		// }];
+		var scope = this;
 
 	  	this.addNewBirthday = function() {
-			this.birthdayList.unshift({
+	  		console.log(scope.birthdayList);
+			scope.birthdayList.unshift({
 				firstName: '',
 				lastName: '',
 				birth: {
@@ -33,12 +35,16 @@ angular.module('popup')
 
 	  	this.updatePerson = function(idx, person) {
 	  		person.edit = false;
-	  		this.birthdayList[idx] = person;
-	  		LocalWrapper.set('birthdayList', this.birthdayList, true);
+	  		this.birthdayList[idx] = angular.copy(person);
+	  		this.storage.set('birthdayList', angular.copy(this.birthdayList));
 	  	};
 
 	  	this.editPerson = function(idx, person) {
 	  		person.edit = true;
 	  	};
+
+		this.storage.get('birthdayList').then(function(data) {
+				scope.birthdayList = data;
+		});
 
   }]);
