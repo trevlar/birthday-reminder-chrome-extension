@@ -17,8 +17,7 @@ angular.module('popup')
 		var scope = this;
 
 	  	this.addNewBirthday = function() {
-	  		console.log(scope.birthdayList);
-			scope.birthdayList.unshift({
+			this.birthdayList.unshift({
 				firstName: '',
 				lastName: '',
 				birth: {
@@ -43,8 +42,11 @@ angular.module('popup')
 	  		person.edit = true;
 	  	};
 
-		this.storage.get('birthdayList').then(function(data) {
-				scope.birthdayList = data;
-		});
+	  	this.refresh = function() {
+			this.storage.get('birthdayList').then(function(data) {
+				scope.birthdayList = data || [];
+			});
+	  	};
 
+	  	this.refresh();
   }]);

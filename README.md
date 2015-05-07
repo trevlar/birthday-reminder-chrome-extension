@@ -11,17 +11,17 @@ This includes :
 - Grunt and Bower
 
 ## Minimum Viable Product
-- Birthdays can be added to chrome sync storage.
-- Global time frame for reminders to appear.
-- Birthday reminder day of the birthday.
-- Reminders appear either as a header, footer or sidebar.
-	- Possibly selected by user
+- [x] Birthdays can be added to chrome sync storage.
+- [ ] Global time frame for reminders to appear.
+- [ ] Birthday reminder day of the birthday.
+- [ ] Reminders appear either as a header, footer or sidebar.
+	- [ ] Possibly selected by user
 
 ## Nice to have
-- Integrated with Facebook
-	- Import birthdays
-	- Post to facebook
-- Individual birthday tasks or customized reminder messages.
+- [ ] Integrated with Facebook
+	- [ ] Import birthdays
+	- [ ] Post to facebook
+- [ ] Individual birthday tasks or customized reminder messages.
 
 ## Get Started
 - Clone this repo

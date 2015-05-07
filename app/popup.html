@@ -56,17 +56,8 @@
                                placeholder="Last Name" size="7">
                     </td>
                     <!-- TODO: Convert these to a date picker. -->
-                    <td ng-if="person.edit === true">
-                        <input type="text" ng-model="person.birth.month"
-                               placeholder="Month" size="1">
-                    </td>
-                    <td ng-if="person.edit === true">
-                        <input type="text" ng-model="person.birth.day"
-                               placeholder="Day" size="1">
-                    </td>
-                    <td ng-if="person.edit === true">
-                        <input type="text" ng-model="person.birth.year"
-                               placeholder="Year" size="3">
+                    <td ng-if="person.edit === true" colspan="3">
+                        <label>Select Date: <input type="text" ui-date ng-model="person.birthday"></label>
                     </td>
 
                     <td ng-if="!person.edit">
@@ -111,7 +102,8 @@
             </tfoot>
         </table>
 
-        <button class="btn btn-info" ng-click="contribute()">Contribute</button>
+        <button class="btn btn-info" ng-click="main.contribute()">Contribute</button>
+        <button class="btn btn-info" ng-click="main.refresh()">Refresh List</button>
     </div>
 
     <!-- build:js popup.js -->
